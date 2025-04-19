@@ -53,12 +53,12 @@ def main():
         if uichoice == 1:
             user_Inter.draw_UI_elements(console_Array, processed_vid)
 
-        #If enabled, send I2C data
-        if i2cChoice == 1:
-            i2c_obj.send_I2C_data(console_Array)
+        # #If enabled, send I2C data
+        # if i2cChoice == 1:
+        #     i2c_obj.send_I2C_data(console_Array)
 
         #Resizing Video
-        processed_vid = imutils.resize(processed_vid, width=250)
+        processed_vid = imutils.resize(processed_vid, width=500)
 
         #Showing Video
         cv2.imshow("Threaded / Processed Video", processed_vid)

@@ -1,7 +1,10 @@
 import numpy as np
 import cv2
 import argparse
-from cv_objs import *
+
+from python_ComputerVision.CV_noStreamBuild.cv_objs.CAM_STREAM import *
+
+
 
 class computerVision:
 
@@ -27,7 +30,7 @@ class computerVision:
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
           
         #returns an Arrays "Contours"
-        _, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         #Compare Value to Eliminate Duplicate Contours
         compare_value = 0
@@ -103,7 +106,8 @@ class computerVision:
             rect = cv2.minAreaRect(c)
             #Drawing box around fount contour
             box = cv2.boxPoints(rect)
-            box = np.int0(box)
+            box = np.int32(box)
+            #box = np.int(box)
 
             #Drawing Red Box Around Contour
             cv2.drawContours(vid_stream,[box],0,(0,0,255),2)
